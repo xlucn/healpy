@@ -962,9 +962,12 @@ def create_colormap(cmap, badcolor="gray", bgcolor="white"):
         )
     else:
         newcm = copy.copy(cmap0)
-    newcm.set_over(newcm(1.0))
-    newcm.set_under(bgcolor)
-    newcm.set_bad(badcolor)
+
+    if isinstance(cmap, str):
+        newcm.set_over(newcm(1.0))
+        newcm.set_under(bgcolor)
+        newcm.set_bad(badcolor)
+
     return newcm
 
 
